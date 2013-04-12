@@ -1,0 +1,13 @@
+{
+    "name": "ext-theme-neptune-charcoal",
+    "type": "theme",
+    "creator": "Sencha",
+    "summary": "A neptune-based dark-gray theme",
+    "detailedDescription": "This theme package demonstrates how easy it is to customize the neptune theme by changing the $base-color",
+    "version": "1.0.0",
+    "compatVersion": "1.0.0",
+    "format": "1",
+    "local": true,
+    "requires": [],
+    "extend": "ext-theme-neptune"
+}
