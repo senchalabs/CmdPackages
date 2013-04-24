@@ -4,7 +4,7 @@ This theme illustrates the simple side of theming in Ext JS 4.2 using Neptune.
 
 ![Screenshot](docs/screenshot.png)
 
-Using in your app:
+Using in your app's sencha.cfg (`".sencha/app/sencha.cfg"`) file:
 
     app.theme=ext-theme-neptune-charcoal
 
