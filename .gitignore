@@ -1,3 +1,5 @@
-/build/
+/ext
+/touch
+build/
 /nbproject/
-/build.xml
+.DS_Store

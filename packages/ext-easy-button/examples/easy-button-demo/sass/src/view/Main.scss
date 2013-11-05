@@ -1,0 +1,6 @@
+// Here we define an extra UI for easy button.  This shows that the application can
+// use sass mixins defined in packages that it requires.
+@include easy-button(
+    $ui: 'red',
+    $background-color: red
+);
