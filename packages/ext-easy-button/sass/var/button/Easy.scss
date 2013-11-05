@@ -1,7 +1,7 @@
 // here we define a SASS variable ($easy-button-background-color) that derives its value
 // from a theme variable ($button-default-background-color). This means that the default
 // color of an easy button will match the default button color of the application's theme
-// (app.theme) if easy-button is built as a standalone package, then its package.theme
+// (app.theme) if ext-easy-button is built as a standalone package, then its package.theme
 // property will determine the theme that is used.
 $easy-button-background-color: $button-default-background-color !default;
 $easy-button-border-color: #ccc !default;

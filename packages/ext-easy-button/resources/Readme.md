@@ -1,3 +1,3 @@
-# easy-button/resources
+# ext-easy-button/resources
 
 This folder contains static resources (typically an `"images"` folder as well).

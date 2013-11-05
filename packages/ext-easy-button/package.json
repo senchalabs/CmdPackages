@@ -1,5 +1,5 @@
 {
-    "name": "easy-button",
+    "name": "ext-easy-button",
     "type": "code",
     "creator": "anonymous",
     "summary": "Short summary",
@@ -8,5 +8,7 @@
     "compatVersion": "1.0.0",
     "format": "1",
     "local": true,
-    "requires": []
+    "requires": [
+        "ext-theme-neptune"
+    ]
 }

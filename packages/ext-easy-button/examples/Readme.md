@@ -1,4 +1,4 @@
-# easy-button/examples
+# ext-easy-button/examples
 
 This folder contains example applications demonstrating this package. Each of
 these applications will be built as part of the package build:
