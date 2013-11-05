@@ -3,6 +3,7 @@ Ext.define('EasyButton.button.Easy', {
     xtype: 'easybutton',
     ui: 'easy-default',
     text: 'Easy',
+    iconCls: 'easy-icon',
     requires: [
         'Ext.window.MessageBox'
     ],
