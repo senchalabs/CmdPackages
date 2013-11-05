@@ -2,6 +2,7 @@
     "name": "EasyButtonDemo",
 
     "requires": [
+        "easy-button"
     ],
 
     "id": "80ad2518-7cc5-4f2d-b49d-8b9cb46c82b8"

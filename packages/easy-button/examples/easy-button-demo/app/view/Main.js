@@ -1,26 +1,13 @@
 Ext.define('EasyButtonDemo.view.Main', {
     extend: 'Ext.container.Container',
-    requires:[
-        'Ext.tab.Panel',
-        'Ext.layout.container.Border'
-    ],
-    
     xtype: 'app-main',
-
-    layout: {
-        type: 'border'
+    defaults: {
+        margin: 50
     },
-
     items: [{
-        region: 'west',
-        xtype: 'panel',
-        title: 'west',
-        width: 150
+        xtype: 'easybutton'
     },{
-        region: 'center',
-        xtype: 'tabpanel',
-        items:[{
-            title: 'Center Tab 1'
-        }]
+        xtype: 'easybutton',
+        ui: 'easy-red'
     }]
 });
