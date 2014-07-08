@@ -1,0 +1,10 @@
+{
+    "name": "sencha-php",
+    "format": "1",
+    "version": "@@CMD_VERSION@@",
+    "creator": "Sencha",
+    "summary": "PHP extension for embedded web server",
+    "type": "extension",
+    "requires": [
+    ]
+}
