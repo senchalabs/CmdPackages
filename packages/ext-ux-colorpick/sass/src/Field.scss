@@ -1,0 +1,17 @@
+.x-colorpicker-field {
+    .#{$prefix}form-item-body {
+        position: relative;
+    }
+
+    .x-color-swatch {
+        position: absolute;
+        left: 4px;
+        top: 4px;
+        width: 20px;
+        bottom: 4px;
+    }
+
+    input {
+        padding-left: 26px;
+    }
+}

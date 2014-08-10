@@ -1,0 +1,123 @@
+/* The actual pop window with the color picker components */
+.x-colorpicker {
+
+    // needed for overflow: visible for color map & slider draggers
+    // to "break out" of their drag boundaries
+    overflow: visible;
+    >.x-box-inner {
+        overflow: visible;
+
+        .x-colopicker-escape-overflow {
+            overflow: visible;
+
+            >.x-box-inner {
+                overflow: visible;
+            }
+        } // eo .x-colopicker-escape-overflow
+
+    } // eo >.x-box-inner
+
+    // Center field labels
+    .x-form-item-label {
+        text-align: center;
+    }
+
+    // main color map for shade selection with draggable circle
+    .x-colorpicker-colormap {
+        background-color: red;
+
+        // circle for dragging
+        .x-colorpicker-colormap-draghandle-container {
+            overflow : visible;
+            z-index  : 1;
+
+            .x-colorpicker-colormap-draghandle {
+                width      : 15px;
+                height     : 15px;
+                position   : relative;
+                left       : -7px;
+                top        : -7px;
+                background-image : theme-background-image('drag_circle', 'png');
+            }
+
+        } // eo .x-colorpicker-colormap-draghandle-container
+
+    } // eo .x-colorpicker-colormap
+
+    // transparent PNG for shades blending
+    .x-colorpicker-colormap:before {
+        position : absolute;
+        top      : 0;
+        left     : 0;
+        width    : 100%;
+        height   : 100%;
+        content: theme-background-image('map_gradient','png');
+    }
+
+    // 4 sliders
+    .x-colorpicker-slider {
+
+        .draghandle-container {
+            width: 20px;
+
+            .draghandle-outer {
+                .draghandle {
+                    width             : 32px;
+                    height            : 9px;
+                    position          : relative;
+                    left              : -6px;
+                    top               : -4px;
+                    background-image  : theme-background-image('pickerslider','png');
+                    background-repeat : no-repeat;
+                }
+            } // eo .draghandle-outer 
+
+        } // eo .draghandle-container
+
+        &.hue {
+            .draghandle-container {
+                $huegradient: image-path('huegradient','png');
+
+                background-image: theme-background-image('huegradient','png');
+                background-repeat: no-repeat;
+                background-size : 100% 100%;
+                filter          : progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$huegradient}', sizingMethod='scale');
+                -ms-filter      : "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$huegradient}', sizingMethod='scale')";
+            }
+        }
+
+        &.saturation {
+            .draghandle-container {
+                background : -mox-linear-gradient(top, #ffffff 0%, #000000 100%); /* FF3.6+ */
+                background : -webkit-linear-gradient(top, #ffffff 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+                background : -o-linear-gradient(top, #ffffff 0%,#000000 100%); /* Opera 11.10+ */
+                background : -ms-linear-gradient(top, #ffffff 0%,#000000 100%); /* IE10+ */
+                background : linear-gradient(to bottom, #ffffff 0%,#000000 100%); /* W3C */
+                filter     : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ffffff', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+            }
+        }
+
+        &.value {
+            .draghandle-container {
+                background : -mox-linear-gradient(top, #ff0000 0%, #000000 100%); /* FF3.6+ */
+                background : -webkit-linear-gradient(top, #ff0000 0%,#000000 100%); /* Chrome10+,Safari5.1+ */
+                background : -o-linear-gradient(top, #ff0000 0%,#000000 100%); /* Opera 11.10+ */
+                background : -ms-linear-gradient(top, #ff0000 0%,#000000 100%); /* IE10+ */
+                background : linear-gradient(to bottom, #ff0000 0%,#000000 100%); /* W3C */
+                filter     : progid:DXImageTransform.Microsoft.gradient( startColorstr='#ff0000', endColorstr='#000000',GradientType=0 ); /* IE6-9 */
+            }
+        }
+
+        &.alpha {
+            .draghandle-container {
+                background-image: theme-background-image('checkerboard', 'png');
+            }
+        }
+            
+    } // eo .x-colorpicker-slider
+
+    // Preview on the right top
+    .x-colorpreview {
+        background-image: theme-background-image('checkerboard', 'png');
+    }
+}

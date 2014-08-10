@@ -1,0 +1,51 @@
+{
+    "name": "ext-ux-colorpick",
+    "type": "code",
+    "creator": "Sencha",
+    "summary": "Enhanced Color Pickers",
+    "detailedDescription": "This package provides Ext.ux.colorpick.Field and other color components.",
+    "version": "1.0.0",
+    "compatVersion": "1.0.0",
+    "format": "1",
+
+    "framework": "ext",
+    "builds": {
+        "classic": {
+            "theme": "ext-theme-classic"
+        },
+        "crisp": {
+            "theme": "ext-theme-crisp"
+        },
+        "neptune": {
+            "theme": "ext-theme-neptune"
+        }
+    },
+
+    "output": {
+        "base": "${package.dir}/build/${build.id}",
+        "js": "..",
+        "sass":""
+    },
+
+    /**
+     * Sass configuration properties.
+     */
+    "sass": {
+        /**
+         * The root namespace to use when mapping *.scss files to classes in the
+         * sass/src and sass/var directories.
+         */
+        "namespace": "Ext.ux.colorpick"
+    },
+
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "local": true,
+    "requires": []
+}

@@ -1,0 +1,25 @@
+@function image-path($path, $extension: $image-extension, $nocheck: false) {
+    $path: file_join($relative-image-path-for-uis, $path + '.' + $extension);
+    $ret: none;
+
+    @if $path {
+        @if $nocheck {
+            $ret: $path;
+        } @else if theme_image_exists($image-search-path, $path) {
+            $ret: $path;
+        } @else {
+            @warn "@image-path: Image not found: #{$path}";
+            @if $include-missing-images {
+                $ret: $path;
+            }
+        }
+
+        @if $ret != none {
+            $ret: file_join($theme-resource-path, $path);
+        }
+    } @else {
+        @warn "@image-path: No arguments passed";
+    }
+
+    @return $ret;
+}

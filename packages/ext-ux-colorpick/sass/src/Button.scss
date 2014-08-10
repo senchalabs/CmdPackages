@@ -1,0 +1,6 @@
+/* Color Picker Button - what pulls up the color picker */
+.x-colorpicker-button {
+    position: relative;;
+    border           : 1px solid gray;
+    background-image : theme-background-image('checkerboard', 'png');
+}
