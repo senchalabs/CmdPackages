@@ -9,6 +9,7 @@
     "format": "1",
 
     "framework": "ext",
+
     "builds": {
         "classic": {
             "theme": "ext-theme-classic"
@@ -24,7 +25,7 @@
     "output": {
         "base": "${package.dir}/build/${build.id}",
         "js": "..",
-        "sass":""
+        "sass": ""
     },
 
     "sass": {

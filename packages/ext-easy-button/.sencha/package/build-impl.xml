@@ -66,6 +66,7 @@ this file in most cases.
     system properties and ant task definitions
     ===============================================================
     -->
+    <import file="${basedir}/.sencha/package/refresh-impl.xml"/>
     <import file="${basedir}/.sencha/package/init-impl.xml"/>
     <target name="init"
             depends="init-local,
@@ -75,7 +76,8 @@ this file in most cases.
                      -after-init,
                      -before-init-defaults,
                      -init-defaults,
-                     -after-init-defaults"/>
+                     -after-init-defaults,
+                     -init-compiler"/>
 
     <!--
     ===============================================================
@@ -109,7 +111,8 @@ this file in most cases.
     <target name="-before-clean"/>
     <target name="-after-clean"/>
     <target name="-clean">
-        <delete dir="${build.dir}"/>
+        <delete dir="${package.output.base}"/>
+        <delete dir="${build.temp.dir}"/>
     </target>
     <target name="clean" 
             depends="init"
@@ -294,7 +297,7 @@ this file in most cases.
         <x-make-pkg dir="${package.dir}"
                     files="${build.pkg.manifest}"
                     pkg="${pkg.build.dir}/${pkg.file.name}"
-                    temp="${build.dir}/temp"/>
+                    temp="${build.temp.dir}"/>
     </target>
     <target name="pkg" 
             depends="init"
