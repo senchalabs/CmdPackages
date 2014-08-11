@@ -16,7 +16,7 @@ Ext.define('Ext.ux.colorpick.SelectorController', {
         });
     },
 
-    onDestroy: function () {
+    destroy: function () {
         var me = this,
             view = me.getView(),
             childViewModel = view.childViewModel;

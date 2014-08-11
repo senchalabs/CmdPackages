@@ -2,7 +2,7 @@ Ext.define('Ext.ux.colorpick.ButtonController', {
     extend : 'Ext.app.ViewController',
     alias  : 'controller.colorpick-buttoncontroller',
 
-    onDestroy: function () {
+    destroy: function () {
         var view = this.getView(),
             colorPickerWindow = view.colorPickerWindow;
 
