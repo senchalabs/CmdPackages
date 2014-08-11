@@ -35,3 +35,16 @@ This micro-sized component simply displays a color swatch and responds to clicks
 display the `colorselector` in a popup.
 
 <img src="docs/colorbutton.png">
+
+# Copyright
+
+Copyright (c) 2014 Sencha Inc
+All Rights Reserved
+
+Contact:  http://www.sencha.com/contact
+
+Pre-release code in the Ext repository is intended for development purposes only and will
+not always be stable. 
+
+Use of pre-release code is permitted with your application at your own risk under standard
+Ext license terms. Public redistribution is prohibited.
