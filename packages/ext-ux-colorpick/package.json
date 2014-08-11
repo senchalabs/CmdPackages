@@ -27,14 +27,7 @@
         "sass":""
     },
 
-    /**
-     * Sass configuration properties.
-     */
     "sass": {
-        /**
-         * The root namespace to use when mapping *.scss files to classes in the
-         * sass/src and sass/var directories.
-         */
         "namespace": "Ext.ux.colorpick"
     },
 
