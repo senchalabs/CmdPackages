@@ -24,7 +24,9 @@
 
     // main color map for shade selection with draggable circle
     .x-colorpicker-colormap {
-        background-color: red;
+        // This background image is not really visually presented but we put it here
+        // so that we can pass through the resource URL to our JavaScript side.
+        background-image: theme-background-image('map_gradient','png');
 
         // circle for dragging
         .x-colorpicker-colormap-draghandle-container {
@@ -45,13 +47,12 @@
     } // eo .x-colorpicker-colormap
 
     // transparent PNG for shades blending
-    .x-colorpicker-colormap:before {
+    .x-colorpicker-colormap-blender {
         position : absolute;
         top      : 0;
         left     : 0;
         width    : 100%;
         height   : 100%;
-        content: theme-background-image('map_gradient','png');
     }
 
     // 4 sliders
