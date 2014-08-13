@@ -2,6 +2,8 @@ Ext.define('Ext.ux.colorpick.ButtonController', {
     extend : 'Ext.app.ViewController',
     alias  : 'controller.colorpick-buttoncontroller',
 
+    requires: ['Ext.layout.container.Fit'],
+
     destroy: function () {
         var view = this.getView(),
             colorPickerWindow = view.colorPickerWindow;
@@ -20,19 +22,20 @@ Ext.define('Ext.ux.colorpick.ButtonController', {
 
         if (!popup) {
             popup = Ext.create({
-                xtype: 'window',
-                header: false,
-                resizable: false,
-                items: [{
-                    xtype: 'colorselector',
-                    format: view.getFormat(),
-                    showPreviousColor:   true,
-                    showOkCancelButtons: true,
+                xtype     : 'window',
+                layout    : 'fit',
+                header    : false,
+                resizable : true,
+                items     : [{
+                    xtype               : 'colorselector',
+                    format              : view.getFormat(),
+                    showPreviousColor   :   true,
+                    showOkCancelButtons : true,
 
                     listeners: {
-                        ok:     'onColorPickerOkBtn',
-                        cancel: 'onColorPickerCancelBtn',
-                        scope: this
+                        ok     :     'onColorPickerOkBtn',
+                        cancel : 'onColorPickerCancelBtn',
+                        scope  : this
                     }
                 }]
             });

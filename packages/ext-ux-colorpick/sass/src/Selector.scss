@@ -44,16 +44,16 @@
 
         } // eo .x-colorpicker-colormap-draghandle-container
 
-    } // eo .x-colorpicker-colormap
+        // transparent PNG for shades blending
+        .x-colorpicker-colormap-blender {
+            position : absolute;
+            top      : 0;
+            left     : 0;
+            width    : 100%;
+            height   : 100%;
+        }
 
-    // transparent PNG for shades blending
-    .x-colorpicker-colormap-blender {
-        position : absolute;
-        top      : 0;
-        left     : 0;
-        width    : 100%;
-        height   : 100%;
-    }
+    } // eo .x-colorpicker-colormap
 
     // 4 sliders
     .x-colorpicker-slider {

@@ -14,7 +14,6 @@ Ext.define('Ext.ux.colorpick.Slider', {
         'Ext.ux.colorpick.SliderController'
     ],
 
-    height: 256,
     referenceHolder: true,
 
     // Container for the drag handle; needed since the slider

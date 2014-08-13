@@ -30,7 +30,8 @@ Ext.define('Ext.ux.colorpick.Field', {
         'Ext.window.Window',
         'Ext.ux.colorpick.Selector',
         'Ext.ux.colorpick.FieldController',
-        'Ext.ux.colorpick.ColorUtils'
+        'Ext.ux.colorpick.ColorUtils',
+        'Ext.layout.container.Fit'
     ],
 
     matchFieldWidth : false, // picker is usually wider than field
@@ -75,7 +76,8 @@ Ext.define('Ext.ux.colorpick.Field', {
         me.colorPickerWindow = Ext.widget('window', {
             items        : [ picker ],
             header       : false,
-            resizable    : false
+            resizable    : true,
+            layout       : 'fit'
         });
 
         return me.colorPickerWindow;

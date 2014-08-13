@@ -48,11 +48,15 @@ Ext.define('Ext.ux.colorpick.Selector', {
 
     width     : 580, // default width and height gives 255x255 color map in Crisp
     minWidth  : 440,
+    height    : 337,
     minHeight : 250,
 
-    cls: 'x-colorpicker',
-    padding: 10,
-    layout: 'hbox',
+    cls     : 'x-colorpicker',
+    padding : 10,
+    layout  : {
+        type  : 'hbox',
+        align : 'stretch'
+    },
 
     defaultBindProperty: 'value',
     twoWayBindable: [
@@ -156,9 +160,9 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 // "MAP"
                 {
-                    xtype     : 'colorpickercolormap',
-                    margin: '0 0 6 0', // bottom margin
-                    bind      : {
+                    xtype : 'colorpickercolormap',
+                    flex  : 1,
+                    bind  : {
                         position: {
                             bindTo : '{selectedColor}',
                             deep   : true
@@ -253,7 +257,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 {
                     xtype: 'colorpickersliderhue',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind: {
                         hue: '{selectedColor.h}'
                     },
@@ -298,7 +302,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 {
                     xtype : 'colorpickerslidersaturation',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         saturation : '{saturation}',
                         hue        : '{selectedColor.h}'
@@ -342,7 +346,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 {
                     xtype : 'colorpickerslidervalue',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         value : '{value}',
                         hue   : '{selectedColor.h}'
@@ -389,7 +393,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 {
                     xtype : 'colorpickerslideralpha',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         alpha : '{alpha}',
                         color : {
@@ -425,8 +429,9 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getPreviewAndButtons: function (childViewModel, config) {
         // selected color preview is always shown
         var items = [{
-            xtype  : 'colorpickercolorpreview',
-            bind   : {
+            xtype : 'colorpickercolorpreview',
+            flex  : 1,
+            bind  : {
                 color: {
                     bindTo : '{selectedColor}',
                     deep   : true
@@ -438,7 +443,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
         if (config.showPreviousColor) {
             items.push({
                 xtype  : 'colorpickercolorpreview',
-                height : items[0].height = 128,
+                flex   : 1,
                 bind   : {
                     color: {
                         bindTo : '{previousColor}',
@@ -468,12 +473,12 @@ Ext.define('Ext.ux.colorpick.Selector', {
         }
 
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            width  : 70,
-            margin : '0 0 0 10',
-            items  : items,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            width     : 70,
+            margin    : '0 0 0 10',
+            items     : items,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             }

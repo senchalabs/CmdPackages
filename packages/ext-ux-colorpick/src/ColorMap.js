@@ -13,9 +13,6 @@ Ext.define('Ext.ux.colorpick.ColorMap', {
 
     cls  : 'x-colorpicker-colormap',
 
-    width: 256,
-    height: 256,
-
     // This is the drag "circle"; note it's 1x1 in size to allow full
     // travel around the color map; the inner div has the bigger image
     items: [{
