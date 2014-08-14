@@ -23,17 +23,19 @@ Ext.define('Ext.ux.colorpick.ButtonController', {
         if (!popup) {
             popup = Ext.create({
                 xtype     : 'window',
+                minWidth  : 540,
+                minHeight : 200,
                 layout    : 'fit',
                 header    : false,
                 resizable : true,
                 items     : [{
                     xtype               : 'colorselector',
                     format              : view.getFormat(),
-                    showPreviousColor   :   true,
+                    showPreviousColor   : true,
                     showOkCancelButtons : true,
 
                     listeners: {
-                        ok     :     'onColorPickerOkBtn',
+                        ok     : 'onColorPickerOkBtn',
                         cancel : 'onColorPickerCancelBtn',
                         scope  : this
                     }

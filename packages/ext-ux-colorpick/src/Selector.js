@@ -46,10 +46,8 @@ Ext.define('Ext.ux.colorpick.Selector', {
         'Ext.ux.colorpick.SliderHue'
     ],
 
-    width     : 580, // default width and height gives 255x255 color map in Crisp
-    minWidth  : 440,
-    height    : 337,
-    minHeight : 250,
+    width  : 580, // default width and height gives 255x255 color map in Crisp
+    height : 337,
 
     cls     : 'x-colorpicker',
     padding : 10,
@@ -111,8 +109,12 @@ Ext.define('Ext.ux.colorpick.Selector', {
      * @param {Ext.ux.colorpick.Selector} this
      */
 
+    listeners: {
+        resize: 'onResize'
+    },
+
     constructor: function (config) {
-        var me = this,
+        var me             = this,
             childViewModel = Ext.Factory.viewModel('colorpick-selectormodel');
 
         // Since this component needs to present its value as a thing to which users can
@@ -126,7 +128,6 @@ Ext.define('Ext.ux.colorpick.Selector', {
             me.getSliderAndAField(childViewModel),
             me.getPreviewAndButtons(childViewModel, config)
         ];
-
 
         me.callParent(arguments);
     },
@@ -148,11 +149,11 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getMapAndHexRGBFields: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            flex   : 1,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            flex      : 1,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
@@ -179,8 +180,8 @@ Ext.define('Ext.ux.colorpick.Selector', {
                 // HEX/R/G/B FIELDS
                 {
                     xtype    : 'container',
+                    layout   : 'hbox',
                     defaults : {
-                        style          : 'display: inline-table;',
                         labelSeparator : '',
                         allowBlank     : false,
                         onChange       : function() { // prevent data binding propagation if bad value
@@ -197,7 +198,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
                             xtype      : 'textfield',
                             fieldLabel : 'HEX',
                             labelAlign : 'top',
-                            width      : 75,
+                            flex       : 1,
                             bind       : '{hex}',
                             margin     : { top: 0, right: me.fieldPad, bottom: 0, left: 0 },
                             readOnly   : true
