@@ -246,11 +246,11 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndHField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
@@ -287,11 +287,11 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndSField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
@@ -299,7 +299,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
                 right  : me.fieldPad,
                 left   : me.fieldPad
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslidersaturation',
                     flex  : 1,
@@ -335,15 +335,15 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndVField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslidervalue',
                     flex  : 1,
@@ -379,18 +379,18 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndAField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
             margin: {
-                left   : me.fieldPad
+                left: me.fieldPad
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslideralpha',
                     flex  : 1,

@@ -42,12 +42,12 @@ Ext.define('Ext.ux.colorpick.ColorMap', {
     },
 
     afterRender: function () {
-        var me = this,
+        var me  = this,
             src = me.mapGradientUrl,
-            el = me.el;
+            el  = me.el;
 
         me.callParent();
-        
+
         if (!src) {
             // We do this trick to allow the Sass to calculate resource image path for
             // our package and pick up the proper image URL here.

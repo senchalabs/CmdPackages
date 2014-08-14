@@ -76,16 +76,21 @@
         } // eo .draghandle-container
 
         &.hue {
-            .draghandle-container {
-                $huegradient: image-path('huegradient','png');
+            
+            // This background image is not really visually presented but we put it here
+            // so that we can pass through the resource URL to our JavaScript side.
+            background-image: theme-background-image('huegradient','png');
 
-                background-image: theme-background-image('huegradient','png');
-                background-repeat: no-repeat;
-                background-size : 100% 100%;
-                filter          : progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$huegradient}', sizingMethod='scale');
-                -ms-filter      : "progid:DXImageTransform.Microsoft.AlphaImageLoader(src='#{$huegradient}', sizingMethod='scale')";
+            // the stretched gradient <img>
+            .hue-gradient {
+                position : absolute;
+                top      : 0;
+                left     : 0;
+                width    : 100%;
+                height   : 100%;
             }
-        }
+
+        } // eo &.hue
 
         &.saturation {
             .draghandle-container {

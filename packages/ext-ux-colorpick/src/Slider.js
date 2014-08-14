@@ -21,10 +21,10 @@ Ext.define('Ext.ux.colorpick.Slider', {
     // it in the center; this is what receives the beautiful
     // color gradients for the visual
     items: [{
-        xtype  : 'container',
-        cls    : 'draghandle-container',
+        xtype     : 'container',
+        cls       : 'draghandle-container',
         reference : 'dragHandleContainer',
-        height : '100%',
+        height    : '100%',
 
         // This is the drag handle; note it's 100%x1 in size to allow full 
         // vertical drag travel; the inner div has the bigger image
