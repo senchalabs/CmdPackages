@@ -30,7 +30,8 @@ Ext.define('Ext.ux.colorpick.Field', {
         'Ext.window.Window',
         'Ext.ux.colorpick.Selector',
         'Ext.ux.colorpick.FieldController',
-        'Ext.ux.colorpick.ColorUtils'
+        'Ext.ux.colorpick.ColorUtils',
+        'Ext.layout.container.Fit'
     ],
 
     matchFieldWidth : false, // picker is usually wider than field
@@ -55,16 +56,16 @@ Ext.define('Ext.ux.colorpick.Field', {
 
     // override as required by parent pickerfield
     createPicker: function() {
-        var me    = this,
+        var me     = this,
             picker = {
-                xtype: 'colorselector',
+                xtype               : 'colorselector',
                 format              : me.getFormat(),
                 showPreviousColor   : true,
                 showOkCancelButtons : true,
                 color               : me.getColor(),
                 listeners           : {
-                    ok: 'onColorPickerOK',
-                    cancel: 'onColorPickerCancel'
+                    ok     : 'onColorPickerOK',
+                    cancel : 'onColorPickerCancel'
                 }
             };
 
@@ -73,9 +74,12 @@ Ext.define('Ext.ux.colorpick.Field', {
 
         // the window will actually be shown and will house the picker
         me.colorPickerWindow = Ext.widget('window', {
-            items        : [ picker ],
-            header       : false,
-            resizable    : false
+            items     : [ picker ],
+            minWidth  : 540,
+            minHeight : 200,
+            header    : false,
+            resizable : true,
+            layout    : 'fit'
         });
 
         return me.colorPickerWindow;

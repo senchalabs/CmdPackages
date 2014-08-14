@@ -13,10 +13,7 @@ Ext.define('Ext.ux.colorpick.ColorMap', {
 
     cls  : 'x-colorpicker-colormap',
 
-    width: 256,
-    height: 256,
-
-    // This is the drag "circle"; note it's 1x1 in size to allow full 
+    // This is the drag "circle"; note it's 1x1 in size to allow full
     // travel around the color map; the inner div has the bigger image
     items: [{
         xtype     : 'component',
@@ -42,6 +39,42 @@ Ext.define('Ext.ux.colorpick.ColorMap', {
             fn    : 'onHueBindingChanged',
             scope : 'controller'
         }
+    },
+
+    afterRender: function () {
+        var me  = this,
+            src = me.mapGradientUrl,
+            el  = me.el;
+
+        me.callParent();
+
+        if (!src) {
+            // We do this trick to allow the Sass to calculate resource image path for
+            // our package and pick up the proper image URL here.
+            src = el.getStyle('background-image');
+            src = src.substring(4, src.length - 1);  // strip off outer "url(...)"
+
+            // In IE8 this path will have quotes around it
+            if (src.indexOf('"') === 0) {
+                src = src.substring(1, src.length-1);
+            }
+
+            // Then remember it on our prototype for any subsequent instances.
+            Ext.ux.colorpick.ColorMap.prototype.mapGradientUrl = src;
+        }
+
+        // Now clear that style because it will conflict with the background-color
+        el.setStyle('background-image', 'none');
+
+        // Create the image with transparent PNG with black and white gradient shades;
+        // it blends with the background color (which changes with hue selection). This
+        // must be an IMG in order to properly stretch to fit.
+        el = me.layout.getElementTarget(); // the el for items and html
+        el.createChild({
+            tag: 'img',
+            cls: 'x-colorpicker-colormap-blender',
+            src: src
+        });
     },
 
     // Called via data binding whenever selectedColor changes; fires "colorbindingchanged"

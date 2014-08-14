@@ -46,13 +46,15 @@ Ext.define('Ext.ux.colorpick.Selector', {
         'Ext.ux.colorpick.SliderHue'
     ],
 
-    width     : 580, // default width and height gives 255x255 color map in Crisp
-    minWidth  : 440,
-    minHeight : 250,
+    width  : 580, // default width and height gives 255x255 color map in Crisp
+    height : 337,
 
-    cls: 'x-colorpicker',
-    padding: 10,
-    layout: 'hbox',
+    cls     : 'x-colorpicker',
+    padding : 10,
+    layout  : {
+        type  : 'hbox',
+        align : 'stretch'
+    },
 
     defaultBindProperty: 'value',
     twoWayBindable: [
@@ -107,8 +109,12 @@ Ext.define('Ext.ux.colorpick.Selector', {
      * @param {Ext.ux.colorpick.Selector} this
      */
 
+    listeners: {
+        resize: 'onResize'
+    },
+
     constructor: function (config) {
-        var me = this,
+        var me             = this,
             childViewModel = Ext.Factory.viewModel('colorpick-selectormodel');
 
         // Since this component needs to present its value as a thing to which users can
@@ -122,7 +128,6 @@ Ext.define('Ext.ux.colorpick.Selector', {
             me.getSliderAndAField(childViewModel),
             me.getPreviewAndButtons(childViewModel, config)
         ];
-
 
         me.callParent(arguments);
     },
@@ -144,11 +149,11 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getMapAndHexRGBFields: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            flex   : 1,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            flex      : 1,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
@@ -156,9 +161,9 @@ Ext.define('Ext.ux.colorpick.Selector', {
             items  : [
                 // "MAP"
                 {
-                    xtype     : 'colorpickercolormap',
-                    margin: '0 0 6 0', // bottom margin
-                    bind      : {
+                    xtype : 'colorpickercolormap',
+                    flex  : 1,
+                    bind  : {
                         position: {
                             bindTo : '{selectedColor}',
                             deep   : true
@@ -175,8 +180,8 @@ Ext.define('Ext.ux.colorpick.Selector', {
                 // HEX/R/G/B FIELDS
                 {
                     xtype    : 'container',
+                    layout   : 'hbox',
                     defaults : {
-                        style          : 'display: inline-table;',
                         labelSeparator : '',
                         allowBlank     : false,
                         onChange       : function() { // prevent data binding propagation if bad value
@@ -193,7 +198,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
                             xtype      : 'textfield',
                             fieldLabel : 'HEX',
                             labelAlign : 'top',
-                            width      : 75,
+                            flex       : 1,
                             bind       : '{hex}',
                             margin     : { top: 0, right: me.fieldPad, bottom: 0, left: 0 },
                             readOnly   : true
@@ -242,18 +247,18 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndHField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
             items  : [
                 {
                     xtype: 'colorpickersliderhue',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind: {
                         hue: '{selectedColor.h}'
                     },
@@ -283,11 +288,11 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndSField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
@@ -295,10 +300,10 @@ Ext.define('Ext.ux.colorpick.Selector', {
                 right  : me.fieldPad,
                 left   : me.fieldPad
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslidersaturation',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         saturation : '{saturation}',
                         hue        : '{selectedColor.h}'
@@ -331,18 +336,18 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndVField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslidervalue',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         value : '{value}',
                         hue   : '{selectedColor.h}'
@@ -375,21 +380,21 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getSliderAndAField: function (childViewModel) {
         var me = this;
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            cls    : 'x-colopicker-escape-overflow',
-            width  : me.fieldWidth,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            cls       : 'x-colopicker-escape-overflow',
+            width     : me.fieldWidth,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             },
             margin: {
-                left   : me.fieldPad
+                left: me.fieldPad
             },
-            items  : [
+            items: [
                 {
                     xtype : 'colorpickerslideralpha',
-                    margin: '0 0 6 0', // bottom margin
+                    flex  : 1,
                     bind  : {
                         alpha : '{alpha}',
                         color : {
@@ -425,8 +430,9 @@ Ext.define('Ext.ux.colorpick.Selector', {
     getPreviewAndButtons: function (childViewModel, config) {
         // selected color preview is always shown
         var items = [{
-            xtype  : 'colorpickercolorpreview',
-            bind   : {
+            xtype : 'colorpickercolorpreview',
+            flex  : 1,
+            bind  : {
                 color: {
                     bindTo : '{selectedColor}',
                     deep   : true
@@ -438,7 +444,7 @@ Ext.define('Ext.ux.colorpick.Selector', {
         if (config.showPreviousColor) {
             items.push({
                 xtype  : 'colorpickercolorpreview',
-                height : items[0].height = 128,
+                flex   : 1,
                 bind   : {
                     color: {
                         bindTo : '{previousColor}',
@@ -468,12 +474,12 @@ Ext.define('Ext.ux.colorpick.Selector', {
         }
 
         return {
-            xtype  : 'container',
-            viewModel: childViewModel,
-            width  : 70,
-            margin : '0 0 0 10',
-            items  : items,
-            layout : {
+            xtype     : 'container',
+            viewModel : childViewModel,
+            width     : 70,
+            margin    : '0 0 0 10',
+            items     : items,
+            layout    : {
                 type  : 'vbox',
                 align : 'stretch'
             }

@@ -100,5 +100,24 @@ Ext.define('Ext.ux.colorpick.SelectorController', {
 
     onCancel: function () {
         this.fireViewEvent('cancel', this.getView());
+    },
+
+    onResize: function() {
+        var me   = this,
+            view = me.getView(),
+            vm   = view.childViewModel;
+
+        // Skip initial rendering resize
+        if (!me.hasResizedOnce) {
+            me.hasResizedOnce = true;
+            return;
+        }
+
+        // Reposition the colormap's & sliders' drag handles
+        view.down('colorpickercolormap').setPosition(vm.getData());
+        view.down('colorpickersliderhue').setHue(vm.get('hue'));
+        view.down('colorpickerslidersaturation').setSaturation(vm.get('saturation'));
+        view.down('colorpickerslidervalue').setValue(vm.get('value'));
+        view.down('colorpickerslideralpha').setAlpha(vm.get('alpha'));
     }
 });
