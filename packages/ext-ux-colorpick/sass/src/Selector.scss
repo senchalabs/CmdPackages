@@ -70,13 +70,14 @@
                     top               : -4px;
                     background-image  : theme-background-image('pickerslider','png');
                     background-repeat : no-repeat;
+                    z-index           : 1;
                 }
             } // eo .draghandle-outer 
 
         } // eo .draghandle-container
 
         &.hue {
-            
+
             // This background image is not really visually presented but we put it here
             // so that we can pass through the resource URL to our JavaScript side.
             background-image: theme-background-image('huegradient','png');
