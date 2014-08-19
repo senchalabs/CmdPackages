@@ -100,31 +100,4 @@
         
     </target>
 
-    <target name="-before-build">
-        <if>
-            <isset property="build.number"/>
-            <then>
-                <echo>Setting package version to ${build.number}</echo>
-                <x-script-def name="x-update-version-number">
-                    <attribute name="jsonfile"/>
-                    <attribute name="version"/>
-                    <script src="${cmd.config.dir}/ant/JSON.js"/>
-                    <script src="${cmd.config.dir}/ant/ant-util.js"/>
-                    <![CDATA[
-                        var jsonFile = attributes.get("jsonfile"),
-                            ver = attributes.get("version") + '',
-                            config = readJson(jsonFile);
-                        config.version = ver;
-                        writeJson(jsonFile, config);
-                    ]]>
-                </x-script-def>
-
-                <x-update-version-number jsonfile="${package.dir}/package.json"
-                                         version="${build.number}"/>
-            </then>
-        </if>
-    </target>
-
-
-
 </project>
