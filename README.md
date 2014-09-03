@@ -19,3 +19,10 @@ control:
 In order to build the packages and apps in this workspace, either copy a version of the
 ext and/or touch framework to the standard path, or modify the `ext.dir` and or `touch.dir`
 properties in `.sencha/workspace/sencha.cfg` to point to a location of your choosing.
+
+If you are using Windows, you can run:
+
+    cd CmdPackages
+    mklink /D ext C:\Code\ext-5.0.1
+
+You will need to run this as Administrator.
