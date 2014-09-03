@@ -25,4 +25,4 @@ If you are using Windows, you can run:
     cd CmdPackages
     mklink /D ext C:\Code\ext-5.0.1
 
-You will need to run this as Administrator.
+You will need to run this as Administrator. To remove this link use `rd`.
