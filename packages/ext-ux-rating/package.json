@@ -1,0 +1,45 @@
+{
+    "name": "ext-ux-rating",
+    "type": "code",
+    "creator": "Sencha",
+    "summary": "A simple ratings component",
+    "detailedDescription": "This component can be configured to use different glyphs, value ranges and rounding",
+    "version": "1.0.0",
+    "compatVersion": "1.0.0",
+    "format": "1",
+    "slicer": {
+        "js": [
+            {
+                "path": "${package.dir}/sass/example/custom.js",
+                "isWidgetManifest": true
+            }
+        ]
+    },
+    "local": true,
+    "requires": [],
+
+    "framework": "ext",
+    "classpath": "${package.dir}/src",
+
+    "builds": {
+        "classic": {
+            "theme": "ext-theme-classic"
+        },
+        "crisp": {
+            "theme": "ext-theme-crisp"
+        },
+        "neptune": {
+            "theme": "ext-theme-neptune"
+        }
+    },
+
+    "output": {
+        "base": "${package.dir}/build/${build.id}",
+        "js": "..",
+        "sass": ""
+    },
+
+    "sass": {
+        "namespace": "Ext.ux.rating"
+    }
+}
