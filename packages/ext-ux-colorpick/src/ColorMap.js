@@ -22,7 +22,7 @@ Ext.define('Ext.ux.colorpick.ColorMap', {
         width     : 1,
         height    : 1,
         draggable : true,
-        html: '<div class="x-colorpicker-colormap-draghandle"></div>'
+        html      : '<div class="x-colorpicker-colormap-draghandle"></div>'
     }],
 
     listeners : {

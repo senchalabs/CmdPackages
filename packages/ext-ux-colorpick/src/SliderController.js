@@ -20,6 +20,7 @@ Ext.define('Ext.ux.colorpick.SliderController', {
         me.mon(view.getEl(), {
             mousedown: me.onMouseDown,
             mouseup: me.onMouseUp,
+            dragstart: me.onDragStart,
             scope: me
         });
     },
@@ -57,6 +58,16 @@ Ext.define('Ext.ux.colorpick.SliderController', {
 
         // tie into the default dd mechanism
         dragHandle.dd.onMouseDown(e, dragHandle.dd.el);
+    },
+
+    // Whenever we start a drag over the colormap area
+    onDragStart: function(e) {
+        var me         = this,
+            view       = me.getView(),
+            dragHandle = view.getDragHandle();
+
+        // tie into the default dd mechanism
+        dragHandle.dd.onDragStart(e, dragHandle.dd.el);
     },
 
     onMouseUp: function () {
