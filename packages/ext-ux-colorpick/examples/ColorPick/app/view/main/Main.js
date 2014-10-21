@@ -66,7 +66,7 @@ Ext.define('ColorPick.view.main.Main', {
         glyph: 9734,
         items: [{
             xtype: 'colorfield',
-            fieldLabel: 'Select color (hex6)',
+            fieldLabel: 'Select color',
             value: 'red'
         },{
             xtype: 'colorfield',
