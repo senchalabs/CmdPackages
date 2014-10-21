@@ -1,5 +1,6 @@
 /**
- * A field that can be clicked to bring up the color picker. The value changes based on the color picker selection.
+ * A field that can be clicked to bring up the color picker.
+ * The value changes based on the color picker selection.
  * The defaul selected color is configurable via {@link #value}.
  *
  *      @example
@@ -37,9 +38,19 @@ Ext.define('Ext.ux.colorpick.Field', {
     matchFieldWidth : false, // picker is usually wider than field
     editable        : false,
 
+    // "Color Swatch" shown on the left of the field
     beforeBodyEl: [
-        '<div class="x-color-swatch" id="{id}-swatchEl" data-ref="swatchEl"></div>'
+        '<div class="x-color-swatch" id="{id}-swatchEl" data-ref="swatchEl">' +
+            '<div class="x-color-swatch-inner"></div>' +
+        '</div>'
     ],
+
+    // style template to support Color Swatch's inner element chaging color - for proper opacity feedback
+    bgStyleTpl: Ext.create('Ext.XTemplate',
+        Ext.isIE && Ext.ieVersion < 10 ?
+          'filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=\'#{hexAlpha}{hex}\', endColorstr=\'#{hexAlpha}{hex}\');' /* IE6-9 */
+          : 'background: {rgba};'
+    ),
 
     cls: 'x-colorpicker-field',
     childEls: [
@@ -86,13 +97,15 @@ Ext.define('Ext.ux.colorpick.Field', {
     },
 
     afterRender: function () {
-        this.callParent();
-        this.updateValue(this.value);
+        var me = this;
+        me.callParent();
+        me.updateValue(me.value);
     },
 
     onExpand: function () {
-        var color = this.getColor();
-        this.colorPicker.setPreviousColor(color);
+        var me    = this,
+            color = me.getColor();
+        me.colorPicker.setPreviousColor(color);
     },
 
     // Expects value formatted as per "format" config
@@ -102,10 +115,8 @@ Ext.define('Ext.ux.colorpick.Field', {
             current = me.value;
 
         me.callParent([c]);
-
-        if (current !== c) {
-            me.updateValue(c);
-        }
+        me.updateValue(c); // always update in case opacity changes, even if value doesn't have it
+                           // which makes for a wierd behavior with "hex6" non-opacity type of format
     },
 
     // Sets this.format and color picker's setFormat()
@@ -118,9 +129,11 @@ Ext.define('Ext.ux.colorpick.Field', {
     },
 
     updateValue: function (color) {
-        var me = this,
-            swatchEl = me.swatchEl,
-            c;
+        var me            = this,
+            swatchEl      = me.swatchEl,
+            swatchInnerEl = swatchEl && swatchEl.down('.x-color-swatch-inner'),
+            ColorUtils    = Ext.ux.colorpick.ColorUtils,
+            c, hex, alpha, rgba, bgStyle;
 
         // If the "value" is changed, update "color" as well. Since these are always
         // tracking each other, we guard against the case where we are being updated
@@ -131,11 +144,14 @@ Ext.define('Ext.ux.colorpick.Field', {
             me.syncing = false;
         }
 
-        c = me.getColor();
+        c       = me.getColor();
+        hex     = ColorUtils.rgb2hex(c.r, c.g, c.b);
+        alpha   = Math.floor(c.a * 255).toString(16) ;
+        rgba    = ColorUtils.getRGBAString(c);
+        bgStyle = me.bgStyleTpl.apply({hex: hex, hexAlpha: alpha, rgba: rgba});
 
-        if (swatchEl) {
-            c = Ext.ux.colorpick.ColorUtils.formats['#hex6'](c);
-            swatchEl.setStyle('background-color', c);
+        if (swatchInnerEl) {
+            swatchInnerEl.applyStyles(bgStyle);
         }
 
         if (me.colorPicker) {
