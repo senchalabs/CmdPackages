@@ -1,17 +1,30 @@
 .x-colorpicker-field {
+
     .#{$prefix}form-item-body {
         position: relative;
     }
 
     .x-color-swatch {
-        position: absolute;
-        left: 4px;
-        top: 4px;
-        width: 20px;
-        bottom: 4px;
+        position         : absolute;
+        width            : 20px;
+        height           : 20px;
+        left             : 4px;
+        background-image : theme-background-image('checkerboard', 'png');
+
+        // vertically center
+        top    : 0px;
+        bottom : 0px;
+        margin : auto;
+
+        .x-color-swatch-inner {
+            position : absolute;
+            height   : 100%;
+            width    : 100%;
+        }
     }
 
     input {
         padding-left: 26px;
     }
-}
+
+} // eo .x-colorpicker-field

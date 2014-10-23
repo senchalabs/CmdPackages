@@ -68,6 +68,11 @@ Ext.define('ColorPick.view.main.Main', {
             xtype: 'colorfield',
             fieldLabel: 'Select color',
             value: 'red'
+        },{
+            xtype: 'colorfield',
+            fieldLabel: 'Select color (hex8)',
+            value: 'FF00FF88',
+            format: 'hex8'
         }]
     }, {
         title: 'Selector',

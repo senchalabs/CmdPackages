@@ -34,7 +34,6 @@ Ext.define('Ext.ux.colorpick.Selector', {
         'Ext.layout.container.HBox',
         'Ext.form.field.Text',
         'Ext.form.field.Number',
-
         'Ext.ux.colorpick.ColorMap',
         'Ext.ux.colorpick.SelectorModel',
         'Ext.ux.colorpick.SelectorController',

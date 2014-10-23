@@ -41,7 +41,7 @@ Ext.define('Ext.ux.colorpick.Button', {
           '<a class="btn" style="height:100%; width:100%; position: absolute;"></a>',
     // eo hack
 
-    // button's background reflects the selected color
+    // style template to support button's "filter" element changing color - for proper opacity feedback
     bgStyleTpl: Ext.create('Ext.XTemplate',
         Ext.isIE && Ext.ieVersion < 10 ?
           'filter: progid:DXImageTransform.Microsoft.gradient(GradientType=0, startColorstr=\'#{hexAlpha}{hex}\', endColorstr=\'#{hexAlpha}{hex}\');' /* IE6-9 */

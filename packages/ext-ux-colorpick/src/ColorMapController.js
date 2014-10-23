@@ -20,13 +20,17 @@ Ext.define('Ext.ux.colorpick.ColorMapController', {
 
         // event handlers
         dd.on('drag', Ext.bind(me.onHandleDrag, me));
-        me.mon(colorMap.getEl(), 'mousedown', me.onMouseDown, me);
+        me.mon(colorMap.getEl(), {
+            mousedown: me.onMouseDown,
+            dragstart: me.onDragStart,
+            scope: me
+        });
     },
 
     // Fires when handle is dragged; propagates "handledrag" event on the ColorMap
     // with parameters "percentX" and "percentY", both 0-1, representing the handle
     // position on the color map, relative to the container
-    onHandleDrag: function() {
+    onHandleDrag: function(componentDragger, e) {
         var me              = this,
             container       = me.getView(), // the Color Map
             dragHandle      = container.down('#dragHandle'),
@@ -62,6 +66,16 @@ Ext.define('Ext.ux.colorpick.ColorMapController', {
 
         // tie into the default dd mechanism
         dragHandle.dd.onMouseDown(e, dragHandle.dd.el);
+    },
+
+    // Whenever we start a drag over the colormap area
+    onDragStart: function(e) {
+        var me         = this,
+            container  = me.getView(),
+            dragHandle = container.down('#dragHandle');
+
+        // tie into the default dd mechanism
+        dragHandle.dd.onDragStart(e, dragHandle.dd.el);
     },
 
     // Whenever the map is clicked (but not the drag handle) we need to position
