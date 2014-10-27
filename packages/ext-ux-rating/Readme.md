@@ -9,9 +9,17 @@ by clicking or tapping on the desired rating.
 The `rating` widget can be used in standard containers:
 
     Ext.create({
-        xtype: 'rating',
+        xtype: 'panel',
+        width: 200,
         renderTo: Ext.getBody(),
-        value: 3
+        layout: {
+            type: 'vbox',
+            align: 'stretch'
+        },
+        items: [{
+            xtype: 'rating',
+            value: 3
+        }]
     });
 
 The example application shows several differently configured instances:
