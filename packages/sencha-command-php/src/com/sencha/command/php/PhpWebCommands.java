@@ -1,5 +1,5 @@
 /*
- * Copyright (c) 2012-2014. Sencha Inc.
+ * Copyright (c) 2012-2015. Sencha Inc.
  */
 
 package com.sencha.command.php;
@@ -9,9 +9,12 @@ import com.sencha.cli.annotations.Doc;
 import com.sencha.command.BaseSenchaCommands;
 import com.sencha.command.filesystem.StartCommand;
 import com.sencha.command.filesystem.WebCommands;
-import org.eclipse.jetty.server.handler.HandlerList;
+import org.eclipse.jetty.server.Handler;
 import org.eclipse.jetty.servlet.ServletContextHandler;
-import org.eclipse.jetty.servlet.ServletHolder;
+
+import java.lang.Override;
+import java.util.ArrayList;
+import java.util.List;
 
 @Doc("Commands to run the web server with PHP support")
 public class PhpWebCommands extends BaseSenchaCommands {
@@ -30,15 +33,19 @@ public class PhpWebCommands extends BaseSenchaCommands {
         public PhpStartCommand(WebCommands webCommands) {
             super(webCommands);
         }
-
+        
         @Override
-        protected void initHandlers(HandlerList contexts) {
-            super.initHandlers(contexts);
-            ServletContextHandler servletContext = new ServletContextHandler();
-            servletContext.addServlet(QuercusServlet.class, "*.php");
-            servletContext.setClassLoader(QuercusServlet.class.getClassLoader());
-            contexts.addHandler(servletContext);
+        protected List<Handler> getHandlers() {
+            List<Handler> handlers = new ArrayList<>();
+            
+            ServletContextHandler quercusHandler = new ServletContextHandler();
+            quercusHandler.addServlet(QuercusServlet.class, "*.php");
+            quercusHandler.setClassLoader(QuercusServlet.class.getClassLoader());
+            handlers.add(quercusHandler);
+            
+            return handlers;
         }
+
     }
 
     public PhpStartCommand createStart() {
